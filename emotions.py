@@ -45,14 +45,14 @@ else:
 
 while cap.isOpened(): # True:
     ret, bgr_image = cap.read()
-
+    bgr_image = cv2.flip(bgr_image, 1)
     #bgr_image = video_capture.read()[1]
 
     gray_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2GRAY)
     rgb_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2RGB)
 
     faces = face_cascade.detectMultiScale(gray_image, scaleFactor=1.1, minNeighbors=5,
-			minSize=(30, 30), flags=cv2.CASCADE_SCALE_IMAGE)
+			minSize=(300, 300), flags=cv2.CASCADE_SCALE_IMAGE)
 
     for face_coordinates in faces:
 
@@ -98,6 +98,7 @@ while cap.isOpened(): # True:
                   color, 0, -45, 1, 1)
 
     bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
+
     cv2.imshow('window_frame', bgr_image)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
