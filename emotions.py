@@ -52,7 +52,7 @@ while cap.isOpened(): # True:
     rgb_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2RGB)
 
     faces = face_cascade.detectMultiScale(gray_image, scaleFactor=1.1, minNeighbors=5,
-			minSize=(300, 300), flags=cv2.CASCADE_SCALE_IMAGE)
+			minSize=(250, 250), flags=cv2.CASCADE_SCALE_IMAGE)
 
     for face_coordinates in faces:
 
